@@ -1,0 +1,29 @@
+<script>
+    $("#sobre").click(function() {scroll();});
+    $("#servicos").click(function() {scroll();});
+    $("#contato").click(function() {scroll();});
+
+    var scroll = function(){
+        var target = window.location.hash;
+        $target = $(target);
+            $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+            }, 900, function () {
+        });
+    }
+    
+    var m_names = new Array("Janeiro", "Fevereiro", "Março", 
+    "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", 
+    "Outubro", "Novembro", "Dezembro");
+    function formatDate() {
+        var data = new Date();
+        var dia = data.getDate();
+        if (dia.toString().length == 1)
+            dia = "0"+dia;
+        var mes = data.getMonth();
+        var ano = data.getFullYear();  
+        return dia+" de "+m_names[mes]+" de "+ano;
+    }	
+    if(document.getElementById("date")) document.getElementById("date").innerHTML = formatDate();
+</script>
+<script src="/js/mascara.js"></script>

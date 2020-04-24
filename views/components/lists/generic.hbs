@@ -1,0 +1,24 @@
+<div class="content-box shadow2">
+        <div class="header-content">
+            <ul>
+                <li><a class="bludrk">{{ listTitle }}</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <table id="datatable" class="releasetable">
+                <thead>
+                    <tr>
+                        <th>{{ label }}</th>
+                    </tr>
+                </thead>
+                <tbody id="myrbody">
+                    {% for item in list %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html >
+{% include "./components/head.hbs" %}
+{% block style %}
+{% endblock %}
+
+<body>
+    <div class='container-fluid'>
+				{% block content %}
+				<div id='loader' class='loader none'></div>
+				<section>
+				<div class='box-login-b  panel-default'>
+					<div class='center pt2 pb2'><img src='public/logo.png' height='130'></div>
+					<div class='panel-body branco cantos-5 sombra mt2'>
+						<div class='row pl5 pr5 pb5'>
+							<div  class='col-sm-12 txt-cinza-6 pb3'><h4>Dashboard</h4></div>
+							<form method="POST">
+								<div class='col-sm-12 pt2 pb2'>
+									<div class="control-label pb1 txt-cinza-6">Usuário</div>
+									<div class="input-group">
+										<input id='username' name='username' type="text" class="form-control" placeholder='Login'>
+										<span class="input-group-addon">
+											<li class="fa fa-user" style="background:transparent;border:none"></li>
+										</span>
+									</div>
+								</div>
+								<div class='col-sm-12 pt4 pb2'>
+									<div class="control-label pb1 txt-cinza-6">Senha</div>
+									<div class="input-group">
+										<input id='password' name='password' type="password" class="form-control" placeholder='Senha'>
+										<span class="input-group-addon">
+											<li class="fa fa-lock" style="background:transparent;border:none"></li>
+										</span>
+									</div>
+								</div>
+								<div class='col-sm-12 pt2'>
+									<input type="checkbox" id="keeplogin"  name="keeplogin"><label class='ml4 normal' for="keeplogin">Manter Conectado.</label>
+								</div>
+								<div class='col-sm-12 pt2'>
+									<a href='#'>Recuperar Senha!</a>
+								</div>
+								<div class='col-sm-12 pt7 right'>
+									<button type='submit' class='btn btn-success pl10 pr10 w100 h50px'> ACESSAR </button>							
+								</div>							
+							</form>
+						</div>
+					</div>
+				</div>
+				</section>
+				{% endblock %}
+</div>
+</body>
+
+{% include "./components/scripts/common.hbs" %}
+{% block scripts %}
+<script src="/js/md5.js"></script>
+<script>
+    $('form').submit(e => {
+        e.preventDefault()
+        let company = 2
+        let username = $('#username').val()
+        let password = MD5($('#password').val())
+        blockControls()
+        $.ajax({
+            url: `${window.location.origin}/login`,
+            method: 'POST',
+            data: {company,username, password},
+            success: (data) => {
+                releaseControls()
+                if(data.success)
+                    window.location = '/'
+                else alert('Usuário/senha inválido.')
+            },
+            error: (jqXHR, textStatus) => {
+                releaseControls()
+                console.log(jqXHR, textStatus)
+                alert('Usuário/senha inválido.')
+            }
+        })
+    })
+
+    function blockControls(){
+		document.getElementById("loader").style.display = "block";
+    }
+
+    function releaseControls(){
+		document.getElementById("loader").style.display = "none";
+    }
+</script>
+{% endblock %}
+</html>

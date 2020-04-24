@@ -1,0 +1,42 @@
+{
+  "name": "telecovid-dash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "pm2": "pm2 stop server.json && pm2 start server.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/joaopandolfi/hydra.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaopandolfi/hydra/issues"
+  },
+  "homepage": "https://github.com/joaopandolfi/hydra#README",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt-nodejs": "0.0.3",
+    "chart.js": "^2.9.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-compile": "^3.0.15",
+    "express-session": "^1.17.0",
+    "file-type": "^10.9.0",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.16.0",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^1.18.4",
+    "nunjucks": "^3.2.0",
+    "qrcode": "^1.4.4",
+    "read-chunk": "^3.1.0",
+    "socket.io": "^2.3.0"
+  }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html >
+{% include "./components/head.hbs" %}
+{% block style %}
+{% endblock %}
+
+<body>
+    <div id="main">
+    	<main id="page">
+			<section id="menu-lateral">
+				{% block mlateral %}
+					{% include "./components/side-menu.hbs" %}
+				{% endblock %}
+	        </section>
+			<section id='corpo'>
+				{% block content %}
+				{% endblock %}
+			</section>
+        </main>
+		
+</div>
+</body>
+
+{% block scripts %}
+{% endblock %}
+</html>
