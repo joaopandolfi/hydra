@@ -4,7 +4,8 @@
 const baseDAO = require('../dao.js');
 const pass = require('../../configurations/pass')
 
-const dao = Object.create(baseDAO);
+var dao = {}
+dao = Object.create(baseDAO);
 
 dao.GetDaily = (company,token,userID) => new Promise((resolve,reject)=>{
   let data = {body: {}}

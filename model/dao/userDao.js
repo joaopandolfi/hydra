@@ -1,9 +1,10 @@
 /*
 * Dao User
 */
-const dao = require('../dao.js');
+const baseDAO = require('../dao.js');
 
-const daoUser = Object.create(dao);
+var dao = {}
+dao = Object.create(baseDAO);
 const pass = require('../../configurations/pass')
 
 /**
