@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html >
+<html>
 {% include "./components/head.hbs" %}
+
 {% block style %}
 {% endblock %}
-
 <body>
     <div id="main">
+        {% block aside %}
+            {% include "./components/aside.hbs" %}
+        {% endblock %}
+	    
     	<main id="page">
-			<section id="menu-lateral">
-				{% block mlateral %}
-					{% include "./components/side-menu.hbs" %}
-				{% endblock %}
+            {% include "./components/header.hbs" %}
+            <section id="content">
+					{% block content %}
+                    {% endblock %}
 	        </section>
-			<section id='corpo'>
-				{% block content %}
-				{% endblock %}
-			</section>
         </main>
-		
 </div>
 </body>
 

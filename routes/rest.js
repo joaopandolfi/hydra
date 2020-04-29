@@ -1,8 +1,7 @@
 const router = require('express').Router();
-
-//Local imports
 const authController = require("../controller/authController")
+const patientController = require("../controller/patientController")
 
-// Doctor ambient
+router.post("/patient/new",authController.Auth, patientController.New)
 
 module.exports = router

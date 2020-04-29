@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html >
-{% include "./components/head.hbs" %}
+{% set title = "Hydra login" %}
+<head>
+	<title>{{title}}</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="utf-8">
+	<meta name="description" 	content="">
+	<meta name="keywords" 	 	content="">
+	<meta name="author" 	 	content="">
+	<meta name="viewport" 		content='width=device-width, initial-scale=1'>
+	<link rel='shortcut icon' 	href='./public/img/ic.png'>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+	<link rel='stylesheet'		href='./public/css/bootstrap.min.css'>
+	<link rel='stylesheet' 		href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<link rel='stylesheet' 		href='./public/css/style.css'>
+
+	<script src='./public/js/jquery.min.js'></script>
+	<script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script src='./public/js/bootstrap.min.js'></script>
+	<!-- <script src='./public/js/scroll/jquery.nicescroll.min.js'></script>
+	<script src='./public/js/echarts.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src='./public/js/funcoes.js'></script>
+	<script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	-->
+	</head>
+
 {% block style %}
 {% endblock %}
 
@@ -15,6 +42,15 @@
 						<div class='row pl5 pr5 pb5'>
 							<div  class='col-sm-12 txt-cinza-6 pb3'><h4>Dashboard</h4></div>
 							<form method="POST">
+								<div class='col-sm-12 pt2 pb2'>
+									<div class="control-label pb1 txt-cinza-6">Instituição</div>
+									<div class="input-group">
+										<input id='institution' name='institution' type="text" class="form-control" placeholder='Cód instituição'>
+										<span class="input-group-addon">
+											<li class="fa fa-puzzle-piece" style="background:transparent;border:none"></li>
+										</span>
+									</div>
+								</div>
 								<div class='col-sm-12 pt2 pb2'>
 									<div class="control-label pb1 txt-cinza-6">Usuário</div>
 									<div class="input-group">
@@ -57,14 +93,14 @@
 <script>
     $('form').submit(e => {
         e.preventDefault()
-        let company = 2
+        let institution = $('#institution').val()
         let username = $('#username').val()
         let password = MD5($('#password').val())
         blockControls()
         $.ajax({
             url: `${window.location.origin}/login`,
             method: 'POST',
-            data: {company,username, password},
+            data: {institution,username, password},
             success: (data) => {
                 releaseControls()
                 if(data.success)

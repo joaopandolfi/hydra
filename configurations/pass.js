@@ -31,13 +31,13 @@ var Pass = {
 	},
 
     REST:{
-        url:"https://localhost:8990/rest",
+        url:"http://localhost:8990/rest",
         hideToken:"",
         userID:0,
     },
 
     Lambda: {
-        url: "https://localhost:8990",
+        url: "http://localhost:8990",
         apiKey: "",
         secretToken: ""
     },

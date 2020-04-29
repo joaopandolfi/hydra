@@ -1,0 +1,24 @@
+{% extends 'default-page.hbs' %} 
+
+{% block content %}
+<div class="header-title">
+        <h1 class="bludrk">{{title}}</h1>
+    </div>
+
+<!-- FORM -->
+<div class="loader" id="loader" hidden="true"></div>
+    <div class="content-box shadow2 loading-mask">
+        <div class="header-content">
+            <div class="search-content">
+            </div>
+            <ul>
+                <li class="active">
+                    <a href="#" class="bludrk">New Prontuary</a>
+                </li>
+            </ul>
+        </div>
+
+        {% include 'components/forms/generic.hbs' %}
+    </div>
+{% endblock %}
+

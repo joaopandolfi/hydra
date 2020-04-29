@@ -7,11 +7,15 @@ const Constants = {
         GESTOR: 10,
         ADMIN: 99
     },
+    Lang:{
+        Default:"ptbr",
+        Supporteds:["ptbr"]
+    },
     Paths:{
         Upload:'./public/uploads/' 
     },
     Ports:{
-        http:80,
+        http:8888,
         https:443
     },
     Debug: true,

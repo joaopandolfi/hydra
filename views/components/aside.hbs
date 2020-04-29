@@ -1,12 +1,39 @@
 <aside>
     <div id="logo">
-        <a href="/"><img class="logo" src="/public/{{layout.logo}}"></a>
+        <a href="/"><img class="logo" src="/public/img/logo.png"></a>
     </div>
     <nav id="menu">
         <ul>
             <li><p>Principal</p></li>
             <li><a href="/"><i class="fas fa-chart-line"></i>Dashboard</a></li>
-        
+            <li><a href="/patients"><i class="fas fa-address-card"></i>Pacientes</a></li>
+
+           {% if user.permission >= 5 %}
+                {% if false %}
+                    <li><p>Custos</p></li>
+                    <li><a href="/costs"><i class="fas fa-dollar-sign"></i>Custos Gerais</a></li>
+                {% endif %}
+                <li><p>Gerenciamento</p></li>
+                <!-- /manage/users -->
+                <li><a href="/users"><i class="fas fa-address-card"></i>Usuários</a></li>
+            {% endif %}
+
+
+            {% if user.permission >= 3 %}
+                <li><p>Formulários</p></li>
+                <li><a href="/forms/location"><i class="far fa-building"></i>Locais</a></li>
+                <li><a href="/forms/type"><i class="fa fa-puzzle-piece" aria-hidden="true"></i>Tipos</a></li>
+            {% endif %}
+
+            {% if false %}
+            <li><p>Financeiro</p></li>
+            <li><a href="/release"><i class="fas fa-dollar-sign"></i>Lançamentos</a></li>
+            <li><a href="/providers"><i class="far fa-address-book"></i>Fornecedores</a></li>
+            <li><a href="/budget"><i class="fas fa-chart-bar"></i>Exec. Orçamentária</a></li>
+            <li><p>Configurações</p></li>
+            <li><a href="/ccusto"><i class="far fa-bookmark"></i></i>Plano de Contas</a></li>
+            <li><a href="/config"><i class="fas fa-cog"></i>Preferências</a></li>
+            {% endif %}
         </ul>
     </nav>
 </aside>

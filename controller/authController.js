@@ -60,6 +60,7 @@ authController.Forbidden = (req,res) =>{
 
 authController.Logout = (req,res) =>{
     req.session.username = null
+    req.session.token = null
     res.redirect('/')
 }
 
