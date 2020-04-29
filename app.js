@@ -1,3 +1,12 @@
+console.log(" _    _           _           ")
+console.log("| |  | |         | |          ")
+console.log("| |__| |_   _  __| |_ __ __ _ ")
+console.log("|  __  | | | |/ _` | '__/ _` |")
+console.log("| |  | | |_| | (_| | | | (_| |")
+console.log("|_|  |_|\\__, |\\__,_|_|  \\__,_|")
+console.log("         __/ |                ")
+console.log("        |___/                 ")
+
 const express = require('express');
 const app = express();
 const nunjucks = require('nunjucks');
@@ -16,6 +25,7 @@ const pass = require('./configurations/pass')
 const gf = require('./configurations/globalFunctions')
 const socket = require('./services/socketService')
 
+console.log(".")
 // Server
 app.set('view engine', 'hbs');
 
@@ -44,8 +54,10 @@ app.use(bodyParser.json())
 // Session
 app.use(expressSession(pass.session))
 
+console.log("[+] Starting ")
 if(!config.Debug){
     // HTTPS
+    console.log("[+] Using SSL ")
     var privateKey  = fs.readFileSync(config.SSL.Key, 'utf8');
     var certificate = fs.readFileSync(config.SSL.Cert, 'utf8');
     var credentials = {key: privateKey, cert: certificate};
@@ -60,14 +72,13 @@ app.use('/public', express.static('public'))
 
 app.use('/', router);
 
-console.log("#### STARTING HYDRA ####")
 if (!config.Debug){
     // Listen server
     var httpsServer = https.createServer(credentials, app);
 
     // HTTPS
     httpsServer.listen(config.Ports.https, function () {
-        console.log(`Listening HTTPS at: ${config.Ports.https}`)
+        console.log(`[+] Listening HTTPS at: ${config.Ports.https}`)
     });
 
     // HTTP
@@ -85,7 +96,7 @@ if (!config.Debug){
     socket.Register(httpsServer)
 
     httpServer.listen(config.Ports.http, () =>{
-        console.log(`Listening HTTP at: ${config.Ports.http} and redirect to HTTPS`)
+        console.log(`[+] Listening HTTP at: ${config.Ports.http} and redirect to HTTPS`)
     });
 }else {
     var httpServer = http.createServer(app)
@@ -94,6 +105,6 @@ if (!config.Debug){
     socket.Register(httpServer)
 
     httpServer.listen(config.Ports.http, () =>{
-        console.log(`Listening HTTP at: ${config.Ports.http}`)
+        console.log(`[+] Listening HTTP at: ${config.Ports.http}`)
     });
 }
